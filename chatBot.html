@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Chat Bot</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="chatBot.css">
+
+<style>
+</style>
+<script src="chatBot.js"></script>
+<body id="chatBox">
+
+    <!-- this is chat box wrapper to hold whole chat container -->
+<div id="chatBox-wrapper" class="chatBox-wrapper d-none">
+    <!-- this is chat box header the blue area where profile icon and other options appear -->
+    <div id="header" class="userProfile-wrapper">
+        <div class="profile-container">
+            <div class="container-left">
+                <!-- embedding svg directly to reduce load time for icons-->
+                <button class="union">
+                <svg  width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 2C0 0.89543 0.89543 0 2 0C3.10457 0 4 0.89543 4 2C4 3.10457 3.10457 4 2 4C0.89543 4 0 3.10457 0 2ZM0 9C0 7.89543 0.89543 7 2 7C3.10457 7 4 7.89543 4 9C4 10.1046 3.10457 11 2 11C0.89543 11 0 10.1046 0 9ZM2 14C0.89543 14 0 14.8954 0 16C0 17.1046 0.89543 18 2 18C3.10457 18 4 17.1046 4 16C4 14.8954 3.10457 14 2 14Z" fill="white"/>
+                </svg>
+                </button>
+
+                <div class="user-info-container">
+                    <div class="display-picture-container">
+                    <img class="display-picture" src="assets/display-picture.svg">
+                    </div>
+                    <p class="display-title">Fusce Bot</p>
+                    <p class="display-description">Welcome to Fusce help center.
+                     I am Fusce’s Virtual Assistant. </p>
+                </div>
+            </div>
+            <div class="container-right">
+                <button class="maximize-button" id = "toggle" onclick = "toggleFullscreen()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6663 3.11115C14.1754 3.11115 13.7774 3.50911 13.7774 4.00003C13.7774 4.49095 14.1754 4.88892 14.6663 4.88892H17.8539L13.1491 9.59372C12.802 9.94085 12.802 10.5037 13.1491 10.8508C13.4962 11.1979 14.059 11.1979 14.4062 10.8508L19.1107 6.14622V9.33337C19.1107 9.82429 19.5087 10.2223 19.9996 10.2223C20.4905 10.2223 20.8885 9.82429 20.8885 9.33337V4.0198C20.8937 3.78577 20.807 3.55009 20.6284 3.37149C20.5207 3.26377 20.3922 3.18947 20.2558 3.14861C20.1747 3.12424 20.0887 3.11115 19.9996 3.11115H14.6663ZM4.88868 14.6668C4.88868 14.1759 4.49071 13.7779 3.99979 13.7779C3.50887 13.7779 3.1109 14.1759 3.1109 14.6668V20.0001V20.0001C3.1109 20.1256 3.1369 20.245 3.1838 20.3532C3.22011 20.4372 3.26999 20.5167 3.33342 20.5884C3.3584 20.6167 3.38514 20.6433 3.41347 20.6682C3.48036 20.727 3.55397 20.7741 3.63161 20.8094C3.74379 20.8605 3.86847 20.889 3.99979 20.889H9.33312C9.82404 20.889 10.222 20.491 10.222 20.0001C10.222 19.5092 9.82404 19.1112 9.33312 19.1112H6.14573L10.8506 14.4064C11.1977 14.0593 11.1977 13.4965 10.8506 13.1493C10.5034 12.8022 9.94061 12.8022 9.59347 13.1493L4.88868 17.8541V14.6668Z" fill="white"/>
+                    </svg>
+                </button>
+                <button class="toggle-chevron" onclick="popChat()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 8L12 16L20 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>       
+                </button>
+                
+
+            </div>
+        </div>
+    </div>
+    <div id="chatBody" class="chatBody" onscroll="scrollFunction()">
+        <div class="chat-output" id="chat-output">
+
+            <div class="chat-timing">Today</div>
+            <!-- html for bot massage user massage will append when user type and send -->
+                <div  class="bot-massage">
+                    <div class="profile-photo-container">
+                        <img class="profile-photo" src="assets/display-picture.svg" />
+                    </div>
+                    <div class="w-100">
+                        <div class="message">How can I help you?</div>
+                        <div class="chat-detail-container">
+                            <p class="chat-owner">Fusce Bot</p><p class="chat-timing">Just now</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- bot msg end -->
+                <!-- <div class="carousel-wrapper" >
+                    <button class="ripple-button left-button" id="left" onclick="goLeft()">
+                        <img class="ripple-img" src="assets/chevron-tiles.svg" />
+                    </button>
+                    <div id="carousel-container" class="carousel-container">
+                        
+                        <div class="carousel-tile">
+                            <div class="image-container">
+                                <img class="image" src="assets/tile-image.svg" />
+                            </div>
+                            <div class="product-description">
+                                <h1 class="title">Omnichannel AI services</h1>
+                                <p class="description">Automatically resolve customer inquiries
+                                 at industry’s highest rate over messaging</p>
+                            </div>
+                            <button class="action-cta">
+                                Book a Demo
+                            </button>
+    
+                        </div>
+    
+                        <div class="carousel-tile">
+                            <div class="image-container">
+                                <img class="image" src="assets/tile-image.svg" />
+                            </div>
+                            <div class="product-description">
+                                    <h1 class="title">Omnichannel AI for customer services</h1>
+                            </div>
+                           
+                            <button class="action-cta">
+                                Book a Demo
+                            </button>
+                        </div>
+    
+                        <div class="carousel-tile">
+                            <div class="product-description">
+                                <h1 class="title">Omnichannel AI for customer services</h1>
+                                <p class="description">Automatically resolve customer inquiries
+                                 at industry’s highest rate over messaging</p>
+                            </div>
+                            <button class="action-cta">
+                                Explore
+                                <img class="explore-image" src="assets/explore.svg" />
+                            </button>
+                        </div>
+                        
+    
+                    </div>
+                    <div class="indicator-wrapper">
+                         <div class="indicator" id="0"></div>
+                         <div class="indicator" id="1"></div> 
+                         <div class="indicator" id="2"></div>
+                    </div>
+                    <button class="ripple-button right-button" id="right" onclick="goRight()">
+                        <img class="ripple-img" src="assets/chevron-tiles.svg" />   
+                    </button>
+                </div> -->
+               
+            
+           
+            
+          </div>
+          
+         
+    </div>
+    <!-- chat input area bottom -->
+    <div class="chat-options-holder">
+        <div class="chat-input">
+       
+            <div class="file-upload-wrapper">
+                <label class="upload-file-container">
+                    <img class="upload-file-icon" src="assets/paperclip.svg" />
+                    <input class="upload-file-input" id="attachment" type="file" accept="image/*" onchange="loadFile(event)" >
+                </label>
+            </div>
+            
+        
+       
+
+        <form action="#0" id="user-input-form" class="chat-input-form" onsubmit="detectUserinput()">
+           
+          <input type="text" id="user-input" class="user-input" placeholder="Message... ">
+          <button class="send-button">
+              <img class="send-image" src="assets/send.svg" />
+          </button>
+        </form>
+      </div>
+      <p class="powered-by-container">
+          <span class="powered-by">Powered by </span>
+          <span class="brand">Fusce</span>
+        </p>
+      
+    </div>
+   
+    
+</div>
+
+<div class="chat-popup" onclick="openChat()">
+<img class="chat-open-img" src="assets/display-picture.svg"/>
+</div>
+
+</body>
+</html>

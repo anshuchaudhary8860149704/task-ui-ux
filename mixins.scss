@@ -1,0 +1,22 @@
+
+@mixin mobile-width{
+    @media screen and (max-width: 767px){
+        @content;
+    }
+}
+
+/*mixin for remove button default state*/
+@mixin remove-button-style{
+    width: auto;
+    background-color: transparent;
+    border: none;
+}
+
+@font-face {
+    font-family: Proxima Nova;
+    src: url(./fonts/FontsFree-Net-Proxima-Nova-Soft-W03-Regular.ttf);
+ }
+ @font-face {
+    font-family: Proxima Nova soft;
+    src: url(./fonts/FontsFree-Net-Proxima-Nova-Soft-W03-Semibold.ttf);
+ }

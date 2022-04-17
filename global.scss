@@ -1,0 +1,27 @@
+.w-100{
+    width: 100%;
+}
+button{
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
+}
+
+
+
+/*css reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+}
+#chatBox{
+    background-color: #000000b0;
+}
+*{
+    font-family: Proxima Nova;
+ }
